@@ -4,7 +4,7 @@
 
 * What is version control?  Why is it useful?
 
-Keeping track of changes to a code base, including creating, working on and merging different versions of a repository. It's makes it much easier for multiple people to work on a coding project together and not step on each others toes, as well as to protect code that is already working from being messed up when someone tries to add a new feature or change anything else. 
+Version control is a way of keeping track of changes to a code base, including creating, working on and merging different versions of a repository. It's makes it much easier for multiple people to work on a coding project together and not step on each others toes, as well as to protect code that is already working from being messed up when someone tries to add a new feature or change anything else. 
 
 * What is a branch and why would you use one?
 
