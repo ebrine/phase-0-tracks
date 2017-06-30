@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Ice Cream Order Form</title>
+</head>
+<body>
+  <form name="ice_cream_survey" action="success.html" method="post">
+  <fieldset>
+    <div>
+      <label>Ice Cream Container:</label>
+      <select name="container">
+        <option value="cup">Cup</option>
+        <option value="large_cup">Large Cup</option>
+        <option value="sugar_cone">Sugar Cone</option>
+        <option value="waffle_cone">Waffle Cone</option>
+      </select>
+    </div>
+    <div>
+      <label>Toppings:</label>
+      <input type="text" name="topping" placeholder="Enter toppings">
+    </div>
+    <div>
+      <label>Flavor:</label>
+      <select name="flavor">
+        <option value="chocolate">Chocolate</option>
+        <option value="vanilla">Vanilla</option>
+        <option value="mint_chip">Mint Chip</option>
+        <option value="blue_moon">Blue Moon</option>
+      </select>
+    </div>
+  <fieldset>
+    <legend>Whipped Cream</legend>
+    <p>
+      <label>
+        <input type="radio" name="whipped_cream" value="yes">
+        Yes 
+      </label>
+    </p>
+    <p>
+
+    <label>
+        <input type="radio" name="whipped_cream" value="no">
+        No
+      </label>
+    
+      
+    </p>
+
+  </fieldset>  
+  </fieldset>
+  <fieldset>
+    <div>
+      <label>Ideas for New Flavors:</label>
+    <div>
+      <p>      </p>
+    </div>
+      <textarea name="New_flavor_ideas" rows="10" cols="30"></textarea>
+    </div>
+  </fieldset>
+  <button type="submit">Submit your order</button>
+  </form>
+</body>
+</html>
