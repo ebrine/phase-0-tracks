@@ -6,6 +6,9 @@
 <body>
   <form name="ice_cream_survey" action="success.html" method="post">
   <fieldset>
+    <h1>Ice Cream Order Form</h1>
+  </fieldset>
+  <fieldset>
     <div>
       <label>Ice Cream Container:</label>
       <select name="container">
@@ -15,10 +18,12 @@
         <option value="waffle_cone">Waffle Cone</option>
       </select>
     </div>
+    <br/>
     <div>
       <label>Toppings:</label>
       <input type="text" name="topping" placeholder="Enter toppings">
     </div>
+    <br/>
     <div>
       <label>Flavor:</label>
       <select name="flavor">
@@ -28,32 +33,23 @@
         <option value="blue_moon">Blue Moon</option>
       </select>
     </div>
-  <fieldset>
-    <legend>Whipped Cream</legend>
-    <p>
-      <label>
+    <br/>
+      <label> Whipped Cream? </label>
+      <p>
         <input type="radio" name="whipped_cream" value="yes">
         Yes 
-      </label>
     </p>
     <p>
-
     <label>
         <input type="radio" name="whipped_cream" value="no">
         No
-      </label>
-    
-      
+      </label> 
     </p>
-
-  </fieldset>  
   </fieldset>
   <fieldset>
     <div>
       <label>Ideas for New Flavors:</label>
-    <div>
-      <p>      </p>
-    </div>
+   <br/>
       <textarea name="New_flavor_ideas" rows="10" cols="30"></textarea>
     </div>
   </fieldset>
