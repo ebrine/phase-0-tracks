@@ -17,3 +17,8 @@ section.job {
 h2.experience-category:hover {
   background-color: blue;
 }
+/*CSS rule that uses pseudoselector :hover*/
+
+section > h3 {
+  font-style: italic;
+}
