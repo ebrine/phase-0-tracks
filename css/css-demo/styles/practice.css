@@ -9,3 +9,7 @@ section.job {
   padding-bottom: 2px;
   padding-top: 2px;
 }
+
+.responsibilities-list {
+  font-size: .8em;
+}
