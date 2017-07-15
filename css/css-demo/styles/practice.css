@@ -13,3 +13,7 @@ section.job {
 .responsibilities-list {
   font-size: .8em;
 }
+
+h2.experience-category:hover {
+  background-color: blue;
+}
