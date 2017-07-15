@@ -1,1 +1,22 @@
-aksflj
+
+div {
+  position: absolute;
+  
+}
+#octopus {
+  position: relative;
+  width: 20%;
+  margin: auto;
+  margin-top: 200px;
+}
+body {
+  background-color: pink;
+}
+#glasses {
+  left: 300px;
+  top: 300px;
+}
+#hat {
+  top: 100px;
+  left: 240px;
+}
