@@ -1,3 +1,4 @@
+#pseudo code for encrypt method:
 #take the first character of the string
 #if it is a space leave it the same.
 #if letter is "Z", return "A"
@@ -6,6 +7,7 @@
 #Store the next letter
 #Repeat for the next character of the string until the string ends
 #return the stored letters
+
 def encrypt(string)
   length = string.length
   index = 0
@@ -26,6 +28,8 @@ encrypted_string
 end
 #print encrypt ("Amazing Ruby")
 secret = encrypt("Amazing Ruby")
+
+#pseudocode for decrypt method
 #take the first character of the string
 #if it is a space leave it the same.
 #if letter is "a", return "z"
@@ -34,6 +38,7 @@ secret = encrypt("Amazing Ruby")
 #Store the previous letter
 #Repeat for the next character of the string until the string ends
 #return the stored letters
+
 def decrypt(string)
   string = string.downcase
   length = string.length
@@ -56,17 +61,23 @@ def decrypt(string)
   end
 decrypted_string
 end
-#print decrypt(secret)
+print decrypt(secret) #test run
+
+ #test code from assignment:
 #puts encrypt("abc")
 #puts encrypt("zed")
 #puts decrypt("bcd")
 #puts decrypt("afe")
 #puts decrypt(encrypt("swordfish"))
-#Decrypt switches each letter to the previous letter in the alphabet and then encrypt switches each letter to the next letter in the alphabet. Therefore, the two methods cancel each other out when used together and the return value is the same as the input.
+#Decrypt switches each letter to the previous 
+#letter in the alphabet and then encrypt switches 
+#each letter to the next letter in the alphabet. 
+#Therefore, the two methods cancel each other out 
+#when used together and the return value is the 
+#same as the input.
 
 
-# adding an interface
-
+# adding an interface:
 
 # print question asking agent if they want to encrypt or decrypt
 # store the answer
