@@ -1,0 +1,52 @@
+header {
+  border-bottom:solid;
+  position: static;
+}
+
+header p {
+  padding-top: 100px;
+  padding-left: 30px;
+  padding-right: 30px;
+}
+header, footer {
+  background: maroon;
+  color: white; 
+}
+
+h1 {
+  text-align:center;
+  position: fixed;
+  width: 100%;
+ 
+}
+h1, h2 {
+  font-family:sans-serif;
+}
+
+section {
+  display:inline-block;
+  vertical-align:top;
+  width:45%;
+  color: white;
+  padding-left: 30px;
+  padding-right: 30px;
+ }
+body{
+   background-image: url(https://octodex.github.com/images/baracktocat.jpg)
+  
+}
+}
+.column-1{
+ /* margin-left: 20px;*/
+}
+
+footer {
+  border-top-style:solid;
+  margin-top: 30px;
+  padding-top: 20px;
+  text-align: center;
+  padding-bottom: 30px;
+}
+
+
+
