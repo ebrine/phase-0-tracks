@@ -47,7 +47,7 @@ puts "How many employees will be processed?"
       elsif employee_insurance == "no" || employee_insurance=="n"
         wantsinsurance = false
       else
-        puts "Would you like to enroll in the company's health insurance?"
+        puts "Would you like to enroll in the company's health insurance, yes or no?"
         employee_insurance = gets.chomp
         employee_insurance = employee_insurance.downcase
       end
@@ -63,7 +63,7 @@ puts "How many employees will be processed?"
         if allergy == "sunshine"
           is_vampire = "Probably a vampire."
           sunshine_allergy = true;
-          puts "sunshine allergy"
+         # puts "sunshine allergy" # used for testing
         end
       end
 
@@ -111,5 +111,5 @@ puts "How many employees will be processed?"
     end
     employee_number += 1
   end
-
+puts "Actually, never mind! What do these questions have to do with anything? Let's all be friends."
 exit
