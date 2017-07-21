@@ -72,7 +72,7 @@ puts "How many employees will be processed?"
     unless sunshine_allergy == true
       is_vampire == "Results Inconclusive"
       # Check whether employee got age correct
-      # actual age is 2017 minus birthyear, or that number minus 1 if they haven't had a birthday yet
+      # actual age is 2017 minus birthyear
       calculated_age = 2017-employee_birthyear
 
       # creates age_correct variable which stores whether the age math works out
