@@ -5,10 +5,12 @@ header {
 
 header p {
   padding-top: 100px;
+  padding-left: 30px;
+  padding-right: 30px;
 }
 header, footer {
   background: maroon;
-  color: silver; 
+  color: white; 
 }
 
 h1 {
@@ -18,14 +20,16 @@ h1 {
  
 }
 h1, h2 {
-  font-family:cursive;
+  font-family:sans-serif;
 }
 
 section {
   display:inline-block;
   vertical-align:top;
-  width:48%;
+  width:45%;
   color: white;
+  padding-left: 30px;
+  padding-right: 30px;
  }
 body{
    background-image: url(https://octodex.github.com/images/baracktocat.jpg)
@@ -33,17 +37,15 @@ body{
 }
 }
 .column-1{
-  margin-left: 20px;
-}
-footer {
-  border-top-style:solid;
-  margin-top: 10px;
+ /* margin-left: 20px;*/
 }
 
 footer {
   border-top-style:solid;
   margin-top: 30px;
   padding-top: 20px;
+  text-align: center;
+  padding-bottom: 30px;
 }
 
 
