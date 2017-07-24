@@ -1,24 +1,15 @@
-# def say_hello
-#   puts "Why, hello there!"
-#   yield #you have to use yield keyword to run your block
-#   3.times {yield} # you can run the block in a loop or another block, too
-#   yield("steve", "diana")
-#   name1 = "eliza"
-#   name2 = "daniel"
-#   yield(name1, name2)
-# end
 
-# say_hello {|name1, name2| puts "Great to see you, #{name1} and #{name2}!"}
+def greeting
+  puts "Hello, what is your name?"
+  _name = "Eliza"
+  yield(_name)  #you have to use yield keyword to run your block
+  3.times{yield(_name)}  #you can run the block in a loop orgreeting
+end
+
+greeting {|_name| puts "My name is #{_name}!"}
 # #Methods in Ruby by default can take a block
-# #parameters are filled by the method calling the block, in this case, say_hello
+# #parameters are filled by the method calling the block, in this case, greeting
 # #values default to nil, so if you don't define them they will just appear blank rather than causing an error
-
-
-
-
-
-
-# ## add own method here
 
 
 
