@@ -11,13 +11,8 @@ greeting {|_name| puts "My name is #{_name}!"}
 # #parameters are filled by the method calling the block, in this case, greeting
 # #values default to nil, so if you don't define them they will just appear blank rather than causing an error
 
-
-
-
-
-
-
 # ###############################################
+# notes from video on .map, .map!
 
 # letters = ["a", "b", "c", "d", "e"]
 
@@ -49,38 +44,52 @@ greeting {|_name| puts "My name is #{_name}!"}
 
 
 # #################################################
-# # def printer
-# #   puts "This is just a test!"
-# #   3.times { yield("1", "2", "3") }
-# # end
-# # printer { |one, two, three| puts "... testing #{one}, #{two}, #{three}" }
-# # printer { |one, two, three| puts "takeoff in #{three}, #{one} off-blast"}
-# state_n_capital =
-# {"Washington" => "Olympia",
-# "California" => "Sacramento",
-# "Texas" => "Austin"}
-# states = ["Washington", "California", "Texas"]
-# puts "Original Array and Hash:"
-# puts state_n_capital
-# p states
-# ## This part runs the .each method:
-# state_n_capital.each do |state, capital| puts "the capital of #{state} is #{capital}" end
-# states.each do |state| puts "#{state} is part of the USA" end
-# puts "The Array and Hash are now:"
-# puts state_n_capital
-# p states
-# ## Now working with .map method:
-# abbreviations = {
-#   "Washington" => "WA",
-#   "California" => "CA",
-#   "Texas" => "TX"
-# }
-# states.map! do |state|
-#   puts "The abbreviation for #{state} is #{abbreviations[state]}"
-#   abbreviations[state]
-# end
-# puts "Output the modified states array is now:"
-# p states
+#another example of calling a method with a block
+
+def printer
+  puts "This is just a test!"
+  3.times { yield("1", "2", "3") }
+end
+printer { |one, two, three| puts "... testing #{one}, #{two}, #{three}" }
+printer { |one, two, three| puts "takeoff in #{three}, #{one} blast-off"}
+
+
+#################################################################
+# Release 1
+
+
+
+
+state_n_capital =
+{"Washington" => "Olympia",
+"California" => "Sacramento",
+"Texas" => "Austin"}
+
+states = ["Washington", "California", "Texas"]
+
+puts "Original Array and Hash:"
+puts state_n_capital
+p states
+
+## This part runs the .each method:
+state_n_capital.each do |state, capital| puts "The capital of #{state} is #{capital}" end
+states.each do |state| puts "#{state} is part of the USA" end
+puts "The Array and Hash are now:"
+puts state_n_capital
+p states
+
+## Now working with .map method:
+abbreviations = {
+  "Washington" => "WA",
+  "California" => "CA",
+  "Texas" => "TX"
+}
+states.map! do |state|
+  puts "The abbreviation for #{state} is #{abbreviations[state]}"
+  abbreviations[state]
+end
+puts "Output the modified states array is now:"
+p states
 
 
 
