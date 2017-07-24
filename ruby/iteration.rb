@@ -3,7 +3,7 @@ def greeting
   puts "Hello, what is your name?"
   _name = "Eliza"
   yield(_name)  #you have to use yield keyword to run your block
-  3.times{yield(_name)}  #you can run the block in a loop orgreeting
+  3.times{yield(_name)}  #you can run the block in a loop or
 end
 
 greeting {|_name| puts "My name is #{_name}!"}
