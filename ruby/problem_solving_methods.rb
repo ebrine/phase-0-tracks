@@ -1,14 +1,16 @@
 =begin
 Release 0 Pseudocode
-1. Use each_index to look through each array term
+1. Use each_ir to look through each array term
 2. Compare term to given number
 3. Return index if they match
 =end
+
 #Release 0
 def search_array(arr, x)
     arr.each_index { |i| return i if arr[i] == x }
     return nil
 end
+
 #Driver Code for Release 0
 arr = [42, 89, 23, 1]
 p search_array(arr, 1)
@@ -52,3 +54,37 @@ puts "for 6 terms:"
 p fib(6)
 puts "100th term:"
 p fib(100)[-1]
+
+=begin
+## Release 2 
+Pseudocode for Bubble Sort
+0. Until no swaps are made (array is sorted)
+1. Create a loop using an index variable while index variable < length of array -1
+2. Loop through array and compare current + next array item
+3. If next item >= current item, don't swap 
+4. Else, swap the items
+5. Compare resulting array to starting array
+=end
+
+## Release 2 Code
+
+def sort_array(arr)
+  array_to_sort = arr
+  got_swapped = nil
+  until got_swapped == false
+      got_swapped = false
+      array_to_sort.each_index do |i| 
+        break if i + 1 == array_to_sort.length
+        if array_to_sort[i] > array_to_sort[i+1]
+          array_to_sort[i], array_to_sort[i+1] = array_to_sort[i+1], array_to_sort[i]
+          got_swapped = true
+        end
+      end   
+  end
+  return array_to_sort
+end
+
+#Driver Code for Release 2
+array = [35, 27, 8, 88, 72, 20]
+puts "Array to sort is #{array}"
+p "Sorted array is #{sort_array(array)}"
