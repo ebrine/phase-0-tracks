@@ -37,23 +37,27 @@ def alias_method(spy_name)
       if letter == "u"
         #wrap around, replace with "a"
         letter = "a"
-      end
+      else
       #indexes the letter in the vowel array, gets the next vowel
       new_vowel = vowels[vowels.index(letter) + 1]
       letter = new_vowel
+      end
     elsif is_consonant == true
       #puts "#{letter} is a consonant" #test code
       if letter == "z"
         #wrap around, replace with "b"
         letter = "b"
-      end
+      else
       new_consonant = consonants[consonants.index(letter) + 1]
       letter = new_consonant
+      end
     end
   end
   new_spy_name = new_spy_name_letters.join
+  split = new_spy_name.split(' ')
+  split[0] = split[0].capitalize
+  split[1] = split[1].capitalize
+  new_spy_name = split.join(' ')
 end
-
-puts alias_method("eliza brine")
-puts alias_method("stefan DABroski")
+puts "Test:"
 puts alias_method("Felicia Torres")
