@@ -59,14 +59,12 @@ until exit_flag == true
   end
 end
 
-
 puts "Urban, Suburban, or Rural:"
 client_city_type = gets.chomp
 if client_city_type == "none"
 else 
   client_info[:city_type] = client_city_type
 end
-
 
 puts "How many bedrooms in your house?"
 client_bedrooms = gets.chomp
@@ -75,19 +73,62 @@ else
   client_info[:bedrooms] = client_bedrooms.to_i
 end
 
-puts "Please list the rooms you"
-client_bedrooms = gets.chomp
-if client_bedrooms == "none"
+puts "Please list the rooms you would like decorated:"
+client_rooms_to_design = gets.chomp
+if client_rooms_to_design == "none"
 else 
-  client_info[:bedrooms] = client_bedrooms.to_i
+  client_info[:rooms_to_design] = client_rooms_to_design
 end
 
+puts "Decor theme:"
+client_decor_theme = gets.chomp
+if client_decor_theme == "none"
+else
+  client_info[:decor_theme] = client_decor_theme
+end
 
+puts "Budget:"
+client_budget = gets.chomp
+if client_budget == "none"
+else
+  client_info[:budget] = client_budget.to_i
+end
 
+puts "Here is the information you have provided so far:"
+puts client_info
 
-
-
-
-p client_info
-
-exit
+puts "Would you like to update any of your answers? Yes or no."
+answer = gets.chomp.downcase
+exit_flag_2 = false
+while exit_flag_2 == false
+  if answer == "no"
+    puts "Here is your final data form:"
+    puts client_info
+    exit_flag_2 = true
+    exit
+  elsif answer == "yes"
+    exit_flag_2 = true
+    puts "Which key would you like to update?"
+    key_to_update = gets.chomp.to_s
+    puts "What is your new answer?"
+    updated_response = gets.chomp
+    if key_to_update == :budget || key_to_update == :children_number || key_to_update == :bedrooms
+      client_info[key_to_update] = updated_response.to_i
+    elsif key_to_update == :has_pets
+      updated_response = gets.chomp.downcase
+      if updated_response == "yes" || updated_response == true
+        client_info[:has_pets] = true
+      elsif updated_response == "no" || updated_response == false
+        client_info[:has_pets] = false
+      end
+    else 
+      client_info[key_to_update] = updated_response
+    end 
+    puts "Here is your final data form:"
+    puts client_info
+    exit  
+  else
+    puts "Would you like to update any of your answers? Yes or no."
+    answer = gets.chomp.downcase
+  end
+end
