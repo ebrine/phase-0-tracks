@@ -59,5 +59,29 @@ def alias_method(spy_name)
   split[1] = split[1].capitalize
   new_spy_name = split.join(' ')
 end
-puts "Test:"
-puts alias_method("Felicia Torres")
+#puts "Test:"
+#puts alias_method("Felicia Torres")
+
+#### User Interface
+user_quits = false
+spies_hash = {}
+until user_quits == true
+  puts "Please enter the name that you'd like turned into an alias, or type \"quit\" to exit."
+  puts "First Name:"
+  first_name = gets.chomp
+  if first_name == "quit"
+    user_quits = true
+  else
+  puts "Last Name:"
+  last_name = gets.chomp
+  user_name = first_name + " " + last_name
+  puts "Your spy name is #{alias_method(user_name)}"
+  spy_name = alias_method(user_name)
+  spies_hash[user_name] = spy_name
+  end
+end
+
+### prints all of the real names and aliases at the end
+spies_hash.each do |real_name, alias_name|
+  puts "#{alias_name} is actually #{real_name}"
+end
