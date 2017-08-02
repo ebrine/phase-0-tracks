@@ -77,7 +77,10 @@ sailboats = []
 
 50.times do |num|
   sailboats << Boat.new("sailboat", "white")
+
 end
+
+p sailboats
 
 sailboats.each do |boat|
   boat.board_boat(2)
