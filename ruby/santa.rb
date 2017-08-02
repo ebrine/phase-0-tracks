@@ -1,6 +1,6 @@
 class Santa
-  attr_reader :age, :ethnicity
-  attr_accessor :gender
+  attr_reader :ethnicity
+  attr_accessor :gender, :age
 
   def initialize(gender, ethnicity)
     puts "Initializing Santa instance ..."
@@ -31,24 +31,43 @@ class Santa
 
 end
 
-santa1 = Santa.new("Girl", "White")
-santa1.eat_milk_and_cookies("chocolate chip cookie")
-santa1.speak
 
-santas = []
+## DRIVER CODE for Release 0 - Release 3
 
+# santa1 = Santa.new("Girl", "White")
+# santa1.eat_milk_and_cookies("chocolate chip cookie")
+# santa1.speak
+
+# santas = []
+
+# genders = ["male", "girl", "boy", "femme", "n/a"]
+# ethnicities = ["Chinese", "Latina", "Latino", "Pirate", 
+# "African"]
+
+# genders.each_index {|i|
+#   santas << Santa.new(genders[i], ethnicities[i])
+# }
+
+# #p santas
+
+# puts santa1.get_mad_at("Vixen")
+# puts santa1.celebrate_birthday
+# puts santa1.gender = "fluid"
+# puts santa1.age
+# puts santa1.ethnicity
+
+### Release 4
 genders = ["male", "girl", "boy", "femme", "n/a"]
 ethnicities = ["Chinese", "Latina", "Latino", "Pirate", 
 "African"]
+ages = [*0 ..140]
 
-genders.each_index {|i|
-  santas << Santa.new(genders[i], ethnicities[i])
-}
-
-#p santas
-
-puts santa1.get_mad_at("Vixen")
-puts santa1.celebrate_birthday
-puts santa1.gender = "fluid"
-puts santa1.age
-puts santa1.ethnicity
+100.times do |n|
+  santa = Santa.new(genders.sample, ethnicities.sample)
+  santa.age = ages.sample
+  puts "----------------"
+  puts "Santa ##{n}:"
+  puts "Santa's age is #{santa.age}"
+  puts "Santa's gender is #{santa.gender}"
+  puts "Santa's ethnicity is #{santa.ethnicity}"
+end
