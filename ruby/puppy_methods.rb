@@ -1,5 +1,9 @@
 class Puppy
 
+  def initialize
+    puts "Initializing new puppy instance"
+  end
+
   def fetch(toy)
     puts "I brought back the #{toy}!"
     toy
@@ -26,7 +30,7 @@ end
 
 ## DRIVER CODE
 
-# puppy_new = Puppy.new
+puppy_new = Puppy.new
 # puppy_new.fetch("ball")
 # puppy_new.speak(5)
 # puppy_new.roll_over
