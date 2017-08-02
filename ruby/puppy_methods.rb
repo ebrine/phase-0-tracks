@@ -67,8 +67,19 @@ class Boat
 end
 
 
-sailboat = Boat.new('power boat', 'blue')
-sailboat.change_boat_type = "sailboat"
-sailboat.boat
-sailboat.board_boat(5)
-sailboat.sail_around_lake(3)
+# sailboat = Boat.new('power boat', 'blue')
+# sailboat.change_boat_type = "sailboat"
+# sailboat.boat
+# sailboat.board_boat(5)
+# sailboat.sail_around_lake(3)
+
+sailboats = []
+
+50.times do |num|
+  sailboats << Boat.new("sailboat", "white")
+end
+
+sailboats.each do |boat|
+  boat.board_boat(2)
+  boat.sail_around_lake(1)
+end
