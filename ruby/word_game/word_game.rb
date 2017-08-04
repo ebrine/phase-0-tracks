@@ -54,7 +54,7 @@ class WordGame
     end
     @game_over = true if @guesses_left == 0
 end
-end
+
 
 # letter_checker
 # purpose: checking if letter is in word
@@ -65,8 +65,14 @@ end
     # return FALSE
    # if letter is in secret word
     # return [letter, index]
+    
+  def letter_checker(guessed_letter)
+    if @hidden_word.include?guessed_letter
+    else
+    end
+  end
 
-
+end
 # word_updater
 # purpose: updating current status of secret word
 # inputs: [letter, index] from previous method
@@ -86,6 +92,7 @@ p game.guesses_left
 
 # asks player 1 for word to hide
 # initializes game with inputed word
+# print @current_word
 # switches to player 2 with message
 # WHILE game play continues (game is not over)
 # Asks for a letter guess 

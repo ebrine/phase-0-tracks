@@ -32,7 +32,9 @@ describe WordGame do
     expect(game.guess_count).to eq 1
   end
   
-  it "" do
+  it "letter_checker should return the letter and its index
+  if the letter is in the hidden word" do
+    game.letter_checker("o").to eq ["o", 0]
   end
   
 end
