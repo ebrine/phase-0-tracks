@@ -101,8 +101,14 @@ end
     else
       puts "Your hidden word!"
     end
+    puts ' '
     puts @current_word.join(" ")
+    puts " "
     puts "------------------"
+  end
+
+  def print_guesses_left
+    puts "You have #{guesses_left} guesses left."
   end
 
 
@@ -150,24 +156,51 @@ end
 
 
 ### User interface: && Driver Code
-
 # asks player 1 for word to hide
 # initializes game with inputed word
 # print @current_word
 # switches to player 2 with message
 # WHILE game play continues (game is not over)
-# Asks for a letter guess 
+  # Asks for a letter guess 
   # updates guess count (calls method)
-    # IF already guessed
-      # gives feedback to user
-    # ELSE:
-      # checks if letter is in word (calls method)
-      # if yes (!false):
-        # updates current status of secret word (calls method)
-        # gives feedback to player
-      # if no:  
-        # gives feedback to player
-  # prints current status of secret word
-  # prints guess count/ guesses left
+  # IF already guessed
+    # gives feedback to user
+  # ELSE:
+    # checks if letter is in word (calls method)
+    # if yes (!false):
+      # updates current status of secret word (calls method)
+      # gives feedback to player
+    # if no:  
+      # gives feedback to player
+# prints current status of secret word
+# prints guess count/ guesses left
 
 # After the loop exits (game is over)
+
+puts "Welcome to the Word Game!"
+puts "Player 1, please enter a word to hide:"
+hidden_word = gets.chomp
+game = WordGame.new(hidden_word)
+puts "Player 2, it's your turn!"
+game.print_current_array
+game.print_guesses_left
+while !game.game_over
+  puts "Guess a letter:"
+  guessed_letter = gets.chomp
+  if game.guess_tracker(guessed_letter) == nil
+    puts "You've already guessed that one!"
+  else
+    letter_checker_output = game.letter_checker(guessed_letter)
+    if letter_checker_output == false
+      puts "That letter isn't in the word. Try again!"
+    else
+      game.word_updater(letter_checker_output)
+    end
+  end
+  game.print_current_array
+  game.print_guesses_left
+end
+
+
+
+
