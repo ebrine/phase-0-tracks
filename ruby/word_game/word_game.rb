@@ -54,7 +54,9 @@ class WordGame
       @guesses_left = @max_guesses - @guess_count
     end
     @game_over = true if @guesses_left == 0
-end
+    return true
+  end
+
 
 
 # letter_checker
@@ -194,6 +196,7 @@ while !game.game_over
     if letter_checker_output == false
       puts "That letter isn't in the word. Try again!"
     else
+      puts "Great guess!"
       game.word_updater(letter_checker_output)
     end
   end
