@@ -10,7 +10,26 @@
   # assign blanks "-" to an array of hidden word's 
     # length, to be used as current status variable
   # letters guessed variable
-  # outputs: prints message. prints blank word.
+  # outputs: prints blank word.
+
+class WordGame
+  # add read/write vars here
+  # attr_reader: 
+  # attr_accessor:
+  def initialize(hidden_word)
+    @hidden_word = hidden_word.split('')
+    @max_guesses = hidden_word.length * 2
+    @game_over = false
+    # REFACTOR??
+    @current_word = Array.new(hidden_word.length) { |i| "-" }
+    @num_guesses = 0
+    @letters_guessed = []
+    @guesses_left = @max_guesses - @num_guesses
+    p @current_word
+  end
+
+
+end
 
 # guess_tracker
 # purpose: keeping track of the number of letters guessed
