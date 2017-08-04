@@ -15,8 +15,8 @@
 class WordGame
   # add read/write vars here
   # attr_reader: 
-  attr_accessor :current_word, :guess_count, 
-  :letters_guessed, :guesses_left, :game_over
+  attr_accessor :current_word, :guess_count, :hidden_word,
+  :letters_guessed, :guesses_left, :game_over, :game_won
 
   def initialize(hidden_word)
     @hidden_word = hidden_word.split('')
@@ -27,6 +27,7 @@ class WordGame
     @guess_count = 0
     @letters_guessed = []
     @guesses_left = @max_guesses - @guess_count
+    @game_won = false
   end
 
 
@@ -71,8 +72,8 @@ class WordGame
 
   def letter_checker(guessed_letter)
     if @hidden_word.include?guessed_letter
-      letter_index = @hidden_word.index(guessed_letter)
-      return [guessed_letter, letter_index]
+      letter_index_array = @hidden_word.map.with_index{|x, i| i if x == guessed_letter}.compact
+      return [guessed_letter, letter_index_array]
     else
       return false
     end
@@ -88,11 +89,14 @@ class WordGame
 
   def word_updater(array)
     correct_letter = array[0]
-    i = array[1]
-    @current_word.delete_at(i)
-    @current_word.insert(i, correct_letter)
+    index_array = array[1]
+    index_array.each do |i| 
+      @current_word.delete_at(i) 
+      @current_word.insert(i, correct_letter)
+    end
     is_finished = !(@current_word.include? "_")
     @game_over = true if is_finished == true
+    @game_won = true if is_finished == true
     return @current_word
   end
 
@@ -185,8 +189,8 @@ hidden_word = gets.chomp
 game = WordGame.new(hidden_word)
 puts "Player 2, it's your turn!"
 game.print_current_array
-game.print_guesses_left
 while !game.game_over
+  game.print_guesses_left
   puts "Guess a letter:"
   guessed_letter = gets.chomp
   if game.guess_tracker(guessed_letter) == nil
@@ -201,9 +205,16 @@ while !game.game_over
     end
   end
   game.print_current_array
-  game.print_guesses_left
 end
 
+if game.game_won
+  puts "Congratulations, you've guessed the word!"
+else
+  puts "You're all out of guesses :( Better luck next time."
+  puts "The hidden word was:"
+  puts " "
+  puts game.hidden_word.join(" ")
+end
 
 
 
