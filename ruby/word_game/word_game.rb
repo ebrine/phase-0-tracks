@@ -65,10 +65,13 @@ end
     # return FALSE
    # if letter is in secret word
     # return [letter, index]
-    
+
   def letter_checker(guessed_letter)
     if @hidden_word.include?guessed_letter
+      letter_index = @hidden_word.index(guessed_letter)
+      return [guessed_letter, letter_index]
     else
+      return false
     end
   end
 
