@@ -84,7 +84,8 @@ end
   # if all "-" have been replaced by letters
     # set game_over variable to true
 
-  def word_updater([letter, index])
+  def word_updater([letter, i)
+    @current_word.insert(i, letter)
   end
 
 end
