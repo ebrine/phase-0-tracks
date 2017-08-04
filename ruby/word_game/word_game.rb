@@ -15,7 +15,8 @@
 class WordGame
   # add read/write vars here
   # attr_reader: 
-  attr_accessor :current_word, :guess_count, :letters_guessed, :guesses_left
+  attr_accessor :current_word, :guess_count, 
+  :letters_guessed, :guesses_left, :game_over
 
   def initialize(hidden_word)
     @hidden_word = hidden_word.split('')
@@ -88,9 +89,23 @@ game = WordGame.new("orange")
 p game.guesses_left
 game.guess_tracker("a")
 game.guess_tracker("a")
+# p game.guess_count
+# p game.letters_guessed
+# p game.guesses_left
+p game.guess_tracker("o")
+p game.guess_tracker("r")
+p game.guess_tracker("a")
+p game.guess_tracker("n")
+p game.guess_tracker("g")
+p game.guess_tracker("e")
 p game.guess_count
-p game.letters_guessed
-p game.guesses_left
+p game.letter_checker("o")
+p game.letter_checker("r")
+p game.letter_checker("a")
+p game.letter_checker("n")
+p game.letter_checker("g")
+p game.letter_checker("e")
+
 ### User interface: && Driver Code
 
 # asks player 1 for word to hide
