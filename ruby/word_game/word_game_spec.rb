@@ -1,8 +1,3 @@
-# WordGame class should be able to 
-
-
-
-
 
 require_relative 'word_game'
 
@@ -12,7 +7,7 @@ describe WordGame do
   let (:game) {WordGame.new("orange")} 
 
   it "initialization sets current_word to array of dashes" do
-    expect(game.current_word).to eq ["-","-","-","-","-","-"]
+    expect(game.current_word).to eq ["_","_","_","_","_","_"]
   end
 
   it "update guess_count when new unique letter is guessed" do
@@ -56,7 +51,23 @@ describe WordGame do
   it "word_updater should insert correctly guessed letter
   into correct location in current_word variable" do
     letter_array = game.letter_checker("o")
-    expect(game.word_updater(letter_array)).to eq ["o","-","-","-","-","-"]
+    expect(game.word_updater(letter_array)).to eq ["o","_","_","_","_","_"]
+  end
+
+  it "game_over when all letters in word are filled in" do
+    letter_array1 = game.letter_checker("o")
+    letter_array2 = game.letter_checker("r")
+    letter_array3 = game.letter_checker("a")
+    letter_array4 = game.letter_checker("n")
+    letter_array5 = game.letter_checker("g")
+    letter_array6 = game.letter_checker("e")
+    game.word_updater(letter_array1)
+    game.word_updater(letter_array2)
+    game.word_updater(letter_array3)
+    game.word_updater(letter_array4)
+    game.word_updater(letter_array5)
+    game.word_updater(letter_array6)
+    expect(game.game_over).to eq true
   end
 
 end

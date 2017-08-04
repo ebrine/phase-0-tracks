@@ -23,7 +23,7 @@ class WordGame
     @max_guesses = hidden_word.length * 2
     @game_over = false
     # REFACTOR??
-    @current_word = Array.new(hidden_word.length) { |i| "-" }
+    @current_word = Array.new(hidden_word.length) { |i| "_" }
     @guess_count = 0
     @letters_guessed = []
     @guesses_left = @max_guesses - @guess_count
@@ -79,37 +79,75 @@ end
 
 # word_updater
 # purpose: updating current status of secret word
-# inputs: [letter, index] from previous method
+# inputs: [letter, index] array from previous method
   # take [letter, index] and update current word variable
   # if all "-" have been replaced by letters
     # set game_over variable to true
 
-  def word_updater([letter, i)
-    @current_word.insert(i, letter)
+  def word_updater(array)
+    correct_letter = array[0]
+    i = array[1]
+    @current_word.delete_at(i)
+    @current_word.insert(i, correct_letter)
+    is_finished = !(@current_word.include? "_")
+    @game_over = true if is_finished == true
+    return @current_word
   end
+
+  def print_current_array
+    puts "------------------"
+    if !@game_over
+      puts "Your word so far:"
+    else
+      puts "Your hidden word!"
+    end
+    puts @current_word.join(" ")
+    puts "------------------"
+  end
+
 
 end
 
-game = WordGame.new("orange")
-p game.guesses_left
-game.guess_tracker("a")
-game.guess_tracker("a")
-# p game.guess_count
-# p game.letters_guessed
+# game = WordGame.new("orange")
 # p game.guesses_left
-p game.guess_tracker("o")
-p game.guess_tracker("r")
-p game.guess_tracker("a")
-p game.guess_tracker("n")
-p game.guess_tracker("g")
-p game.guess_tracker("e")
-p game.guess_count
-p game.letter_checker("o")
-p game.letter_checker("r")
-p game.letter_checker("a")
-p game.letter_checker("n")
-p game.letter_checker("g")
-p game.letter_checker("e")
+# game.guess_tracker("a")
+# game.guess_tracker("a")
+# # p game.guess_count
+# # p game.letters_guessed
+# # p game.guesses_left
+# p game.guess_tracker("o")
+# p game.guess_tracker("r")
+# p game.guess_tracker("a")
+# p game.guess_tracker("n")
+# p game.guess_tracker("g")
+# p game.guess_tracker("e")
+# p game.guess_count
+# p game.letter_checker("o")
+# p game.letter_checker("r")
+# p game.letter_checker("a")
+# p game.letter_checker("n")
+# p game.letter_checker("g")
+# p game.letter_checker("e")
+# game.word_updater(game.letter_checker("e"))
+# p game.current_word
+# game.word_updater(game.letter_checker("a"))
+# p game.current_word
+# game.word_updater(game.letter_checker("n"))
+# p game.current_word
+# game.word_updater(game.letter_checker("o"))
+# p game.current_word
+# game.word_updater(game.letter_checker("r"))
+# game.print_current_array
+# game.word_updater(game.letter_checker("g"))
+# game.word_updater(game.letter_checker("e"))
+# game.word_updater(game.letter_checker("e"))
+
+# p game.current_word
+# p game.current_word.include? "-"
+# p game.game_over
+# puts game.current_word
+# game.print_current_array
+
 
 ### User interface: && Driver Code
 
