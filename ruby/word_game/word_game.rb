@@ -15,21 +15,22 @@
 class WordGame
   # add read/write vars here
   # attr_reader: 
-  # attr_accessor:
+  attr_accessor :current_word, :guess_count, :letters_guessed, :guesses_left
+
   def initialize(hidden_word)
     @hidden_word = hidden_word.split('')
     @max_guesses = hidden_word.length * 2
     @game_over = false
     # REFACTOR??
     @current_word = Array.new(hidden_word.length) { |i| "-" }
-    @num_guesses = 0
+    @guess_count = 0
     @letters_guessed = []
-    @guesses_left = @max_guesses - @num_guesses
-    p @current_word
+    @guesses_left = @max_guesses - @guess_count
   end
 
 
-end
+## Test code
+# game = WordGame.new("orange")
 
 # guess_tracker
 # purpose: keeping track of the number of letters guessed
@@ -43,7 +44,17 @@ end
       # if letters guessed reaches max guesses
         # set game over variable to true
 # outputs: 
-
+  def guess_tracker(guessed_letter)
+    if @letters_guessed.include?guessed_letter
+      return nil
+    else
+      @letters_guessed << guessed_letter
+      @guess_count += 1
+      @guesses_left = @max_guesses - @guess_count
+    end
+    @game_over = true if @guesses_left == 0
+end
+end
 
 # letter_checker
 # purpose: checking if letter is in word
@@ -64,6 +75,13 @@ end
     # set game_over variable to true
 
 
+game = WordGame.new("orange")
+p game.guesses_left
+game.guess_tracker("a")
+game.guess_tracker("a")
+p game.guess_count
+p game.letters_guessed
+p game.guesses_left
 ### User interface: && Driver Code
 
 # asks player 1 for word to hide
