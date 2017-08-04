@@ -1,5 +1,9 @@
 ### Pseudocode for game
 
+## Extra stuff I did:
+# Hid the player 1 input
+##ADD FUNCTIONALITY TO REJECT IF NOT A LETTER (EG ;, ',', ETC) or CAPS
+
 ### Game Class methods:
 
 # Game initialization
@@ -11,6 +15,7 @@
     # length, to be used as current status variable
   # letters guessed variable
   # outputs: prints blank word.
+require 'io/console'
 
 class WordGame
   # add read/write vars here
@@ -78,7 +83,6 @@ class WordGame
       return false
     end
   end
-
 
 # word_updater
 # purpose: updating current status of secret word
@@ -185,14 +189,14 @@ end
 
 puts "Welcome to the Word Game!"
 puts "Player 1, please enter a word to hide:"
-hidden_word = gets.chomp
+hidden_word = STDIN.noecho {|i| i.gets}.chomp
 game = WordGame.new(hidden_word)
 puts "Player 2, it's your turn!"
 game.print_current_array
 while !game.game_over
   game.print_guesses_left
   puts "Guess a letter:"
-  guessed_letter = gets.chomp
+  guessed_letter = gets.chomp.downcase
   if game.guess_tracker(guessed_letter) == nil
     puts "You've already guessed that one!"
   else

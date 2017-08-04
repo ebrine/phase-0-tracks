@@ -29,7 +29,7 @@ describe WordGame do
   
   it "letter_checker should return the letter and its index
   if the letter is in the hidden word" do
-    expect(game.letter_checker("o")).to eq ["o", 0]
+    expect(game.letter_checker("o")).to eq ["o", [0]]
   end
   
   it "game should end if max guesses is reached" do
