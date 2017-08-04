@@ -38,19 +38,25 @@ describe WordGame do
   end
   
   it "game should end if max guesses is reached" do
-    p game.guess_tracker("o")
-    p game.guess_tracker("r")
-    p game.guess_tracker("a")
-    p game.guess_tracker("n")
-    p game.guess_tracker("g")
-    p game.guess_tracker("e")
-    p game.guess_tracker("b")
-    p game.guess_tracker("c")
-    p game.guess_tracker("d")
-    p game.guess_tracker("f")
-    p game.guess_tracker("h")
-    p game.guess_tracker("i")
+    game.guess_tracker("o")
+    game.guess_tracker("r")
+    game.guess_tracker("a")
+    game.guess_tracker("n")
+    game.guess_tracker("g")
+    game.guess_tracker("e")
+    game.guess_tracker("b")
+    game.guess_tracker("c")
+    game.guess_tracker("d")
+    game.guess_tracker("f")
+    game.guess_tracker("h")
+    game.guess_tracker("i")
     expect(game.game_over).to eq true
+  end
+
+  it "word_updater should insert correctly guessed letter
+  into correct location in current_word variable" do
+    letter_array = game.letter_checker("o")
+    expect(game.word_updater(letter_array)).to eq ["o","-","-","-","-","-"]
   end
 
 end

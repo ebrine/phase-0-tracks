@@ -76,7 +76,7 @@ end
     end
   end
 
-end
+
 # word_updater
 # purpose: updating current status of secret word
 # inputs: [letter, index] from previous method
@@ -84,6 +84,10 @@ end
   # if all "-" have been replaced by letters
     # set game_over variable to true
 
+  def word_updater([letter, index])
+  end
+
+end
 
 game = WordGame.new("orange")
 p game.guesses_left
