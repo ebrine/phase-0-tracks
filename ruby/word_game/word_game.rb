@@ -2,7 +2,6 @@
 
 ## Extra stuff I did:
 # Hid the player 1 input
-##ADD FUNCTIONALITY TO REJECT IF NOT A LETTER (EG ;, ',', ETC) or CAPS
 
 ### Game Class methods:
 
