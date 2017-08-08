@@ -85,3 +85,16 @@ alaska.virus_effects
 
 #=======================================================================
 # Reflection Section
+# 
+# The main difference in hash syntaxes is use of strings as keys vs symbols
+# as keys.
+# Require_relative gives a file access to another file in the same directory.
+# require is used to give access to a file in a different directory.
+# 
+# .each, .each_key, .each_value are all methods for iterating through a hash.
+#
+# The variables being passed to the 2 other methods were all instance methods, 
+# which meant that they didn't actually have to be passed if they were being 
+# used within the same class.
+#
+# This challenge helped me with refactoring the most.
