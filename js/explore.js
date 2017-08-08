@@ -1,6 +1,7 @@
 // create a new string
 // iterate through the given word letter by letter
-// add each letter to the front of the new string
+// starting with the last letter and ending with first
+// add letters to reversedString
 
 function reverse(string){
   var reversedString = ""
@@ -11,7 +12,9 @@ function reverse(string){
   return reversedString
 }
 
-console.log(reverse("hello"))
 
-console.log(reverse("how can i help you?"))
+// Driver Code
+reversedGreeting = reverse("how can i help you?")
+
+if (reversedGreeting.length > 5) {console.log(reversedGreeting)}
 
