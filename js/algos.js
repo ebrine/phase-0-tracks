@@ -85,20 +85,20 @@ function stringArray(integer) {
   return array;
 }
 
-// /// Driver Code
-// console.log(longestWord(["eliza", "lily", "madison", "angus"]));
-// console.log(longestWord(["long phrase","longest phrase","longer phrase"]));
-// console.log(longestWord(["giraffe", "sea lion", "elephant"]));
+/// Driver Code
+console.log(longestWord(["eliza", "lily", "madison", "angus"]));
+console.log(longestWord(["long phrase","longest phrase","longer phrase"]));
+console.log(longestWord(["giraffe", "sea lion", "elephant"]));
 
-// console.log(compareObjects({name: "Steven", age: 24, dog: "Ruby"}, {name: "Tamir", age: 54, cat: "Fritz"})); // returns false
-// console.log(compareObjects({name: "Steven", age: 54}, {name: "Tamir", age: 54})); // returns true
-// console.log(compareObjects({animal: "Dog", legs: 4}, {animal: "Dog", legs: 3})); // returns true
+console.log(compareObjects({name: "Steven", age: 24, dog: "Ruby"}, {name: "Tamir", age: 54, cat: "Fritz"})); // returns false
+console.log(compareObjects({name: "Steven", age: 54}, {name: "Tamir", age: 54})); // returns true
+console.log(compareObjects({animal: "Dog", legs: 4}, {animal: "Dog", legs: 3})); // returns true
 
 for (var i = 1; i <= 10; i++){
   var arr = stringArray(getRandom());
-  console.log(arr);
+  console.log("Array of words: " + arr);
   var longest = longestWord(arr);
-  console.log(longest);
+  console.log("Longest word: "+longest);
 }
 
 
