@@ -1,0 +1,40 @@
+ 
+SELECT * FROM schedule;
+
+1|9|Pam|2
+2|12|Bryce|3
+3|2|Bryce|3
+4|4|Laura|2
+5|6|Kelly|1
+6|8|Pam|2
+
+
+UPDATE schedule SET class_id=2 WHERE teacher="Laura";
+
+
+SELECT * FROM schedule, classes WHERE schedule.class_id = classes.id;
+
+1|9|Pam|2|2|Hatha|75
+2|12|Bryce|3|3|Bikram|90
+3|2|Bryce|3|3|Bikram|90
+4|4|Laura|1|1|Vinyasa|60
+5|6|Kelly|1|1|Vinyasa|60
+6|8|Pam|2|2|Hatha|75
+
+
+SELECT time, teacher, type FROM schedule, classes WHERE schedule.class_id = classes.id;
+
+9|Pam|Hatha
+12|Bryce|Bikram
+2|Bryce|Bikram
+4|Laura|Hatha
+6|Kelly|Vinyasa
+8|Pam|Hatha
+
+DELETE FROM schedule WHERE time = 6;
+SELECT * FROM schedule;
+1|9|Pam|2
+2|12|Bryce|3
+3|2|Bryce|3
+4|4|Laura|2
+6|8|Pam|2
