@@ -38,3 +38,14 @@ SELECT * FROM schedule;
 3|2|Bryce|3
 4|4|Laura|2
 6|8|Pam|2
+
+*************** JOINS ****************************
+SELECT schedule.teacher, classes.type FROM schedule JOIN classes ON schedule.class_id = classes.id;
+Pam|Hatha
+Bryce|Bikram
+Bryce|Bikram
+Laura|Hatha
+Pam|Hatha
+
+
+
