@@ -1,0 +1,41 @@
+Question 2
+sqlite> SELECT * FROM businesses, users, reviews;
+1|Grundy Hollow Wedding Chapel|1|Bradford|Pitt|1|4|Beautiful|1|1
+1|Grundy Hollow Wedding Chapel|1|Bradford|Pitt|2|5|Great food|1|2
+1|Grundy Hollow Wedding Chapel|1|Bradford|Pitt|3|1|Bad service|2|1
+1|Grundy Hollow Wedding Chapel|2|Mandy|Kaling|1|4|Beautiful|1|1
+1|Grundy Hollow Wedding Chapel|2|Mandy|Kaling|2|5|Great food|1|2
+1|Grundy Hollow Wedding Chapel|2|Mandy|Kaling|3|1|Bad service|2|1
+2|Amir's Towing|1|Bradford|Pitt|1|4|Beautiful|1|1
+2|Amir's Towing|1|Bradford|Pitt|2|5|Great food|1|2
+2|Amir's Towing|1|Bradford|Pitt|3|1|Bad service|2|1
+2|Amir's Towing|2|Mandy|Kaling|1|4|Beautiful|1|1
+2|Amir's Towing|2|Mandy|Kaling|2|5|Great food|1|2
+2|Amir's Towing|2|Mandy|Kaling|3|1|Bad service|2|1
+
+Question 3
+sqlite> SELECT reviews.stars, reviews.comment, businesses.name, users.first_name, users.last_name
+   ...> FROM ((reviews
+   ...> INNER JOIN businesses ON reviews.business_id = businesses.id)
+   ...> INNER JOIN users ON reviews.user_id = users.id);
+4|Beautiful|Grundy Hollow Wedding Chapel|Bradford|Pitt
+5|Great food|Grundy Hollow Wedding Chapel|Mandy|Kaling
+1|Bad service|Amir's Towing|Bradford|Pitt
+
+Question 4: 
+sqlite> SELECT * FROM users, reviews, businesses WHERE businesses.name = "Grundy Hollow Wedding Chapel";
+1|Bradford|Pitt|1|4|Beautiful|1|1|1|Grundy Hollow Wedding Chapel
+1|Bradford|Pitt|2|5|Great food|1|2|1|Grundy Hollow Wedding Chapel
+1|Bradford|Pitt|3|1|Bad service|2|1|1|Grundy Hollow Wedding Chapel
+2|Mandy|Kaling|1|4|Beautiful|1|1|1|Grundy Hollow Wedding Chapel
+2|Mandy|Kaling|2|5|Great food|1|2|1|Grundy Hollow Wedding Chapel
+2|Mandy|Kaling|3|1|Bad service|2|1|1|Grundy Hollow Wedding Chapel
+
+ALTERNATE INTERPRETATION:
+sqlite> SELECT reviews.stars, reviews.comment, businesses.name, users.first_name, users.last_name 
+   ...> FROM ((reviews
+   ...> INNER JOIN businesses ON reviews.business_id = businesses.id)
+   ...> INNER JOIN users ON reviews.user_id = users.id)
+   ...> WHERE business.name = "Grundy Hollow Wedding Chapel";
+4|Beautiful|Grundy Hollow Wedding Chapel|Bradford|Pitt
+5|Great food|Grundy Hollow Wedding Chapel|Mandy|Kaling
