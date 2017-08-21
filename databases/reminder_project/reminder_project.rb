@@ -71,11 +71,13 @@ def get_reminders(date)
   get = <<-SQL
   SELECT * FROM reminders WHERE date = ?
   SQL
-  p $DB.execute(get, [new_date])
+  $DB.execute(get, [new_date])
   #puts selected_reminders
 end
 
 def print_reminders(array)
+  puts "---------------------------------------"
+  puts "You have #{array.length} reminders:"
   array.each do |reminder|
     date = reminder[1]
     to_do = reminder[2]
@@ -86,9 +88,7 @@ def print_reminders(array)
 end
 
 
-###### UI
-input = nil
-get_reminders("9-01")
+###### UI #######################
 
 puts "    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~"
 puts "    ~~~ REMINDER APP 2017 ~~~~~~"
@@ -109,10 +109,10 @@ puts "(3) View another day's reminders"
 puts "(4) View all reminders"
 puts ""
 input = gets.chomp
-
+puts " "
 
   if input.to_i == 1
-    puts "----------------------------------------"
+    puts "---------------------------------------"
     puts ""
     puts "Enter date for new reminder (month-day)"
     new_date = gets.chomp
@@ -126,16 +126,9 @@ input = gets.chomp
     puts "---------------------------------------"
     puts "What day's reminders would you like to view?"
     input = gets.chomp
-    get_reminders(input)
-    # print reminders
+    print_reminders(get_reminders(input))
   elsif input.to_i == 4
-    reminders_list = $DB.execute('SELECT * FROM reminders')
-    puts "You have #{reminders_list.length} reminders:"
-    reminders_list.each do |entry|
-    puts "On #{entry[1]} don't forget:" 
-    puts "#{entry[2]}"
-    puts ""
-    end
+    print_reminders($DB.execute('SELECT * FROM reminders'))
   else 
     puts "Please enter a valid selection."
   end
