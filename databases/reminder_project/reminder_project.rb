@@ -66,11 +66,29 @@ end
 
 # retrieve reminders for specified date (including today)
 def get_reminders(date)
+  d = date_checker(date)
+  new_date = normalize_date(d)
+  get = <<-SQL
+  SELECT * FROM reminders WHERE date = ?
+  SQL
+  p $DB.execute(get, [new_date])
+  #puts selected_reminders
 end
+
+def print_reminders(array)
+  array.each do |reminder|
+    date = reminder[1]
+    to_do = reminder[2]
+    puts ""
+    puts "On #{date} don't forget:"
+    puts "#{to_do}"
+  end
+end
+
 
 ###### UI
 input = nil
-
+get_reminders("9-01")
 
 puts "    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~"
 puts "    ~~~ REMINDER APP 2017 ~~~~~~"
@@ -105,7 +123,11 @@ input = gets.chomp
   elsif input.to_i == 2
     # calls get_reminders on today
   elsif input.to_i == 3
-    # calls get_reminders on another day
+    puts "---------------------------------------"
+    puts "What day's reminders would you like to view?"
+    input = gets.chomp
+    get_reminders(input)
+    # print reminders
   elsif input.to_i == 4
     reminders_list = $DB.execute('SELECT * FROM reminders')
     puts "You have #{reminders_list.length} reminders:"
