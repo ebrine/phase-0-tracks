@@ -17,50 +17,41 @@
 # complete task/remove task from reminders list
 
 # UI
-# Welcome message with today's date & number of reminders
+# Welcome message with today's date 
 # Options for what they want to do:
   # Read today's reminders
   # Read another day's reminders
   # Create a new reminder
+  # Read all reminders
 # check to ensure date input is valid, otherwise ask to re-enter
 
 # exit at any time
 
 ############ problems to solve/ things to learn
-# (1) how to deal with date ==> 
+# (1) how to deal with dates
 
-# require 'Date'
-# puts "What day? Please enter in form: (month-day)"
-# day = gets.chomp
-# d4 = Date.strptime(day, '%m-%d')
-# p "Your day is #{d4}"
-
-
-## Header
+#******** Header ************
 require 'sqlite3'
-require_relative 'date_checker.rb'
 require 'Date'
-
-$DB = SQLite3::Database.new('reminders.db')
-create_table = <<-SQL
-  CREATE TABLE IF NOT EXISTS reminders (
-    id INTEGER PRIMARY KEY,
-    date VARCHAR(255),
-    reminder VARCHAR(255)
-  )
-SQL
-# create reminders table
-$DB.execute(create_table)
+require_relative 'date_checker.rb'
 
 
+#### METHODS ######
+
+# takes a date that has already gone through date_checker 
 def normalize_date(date)
+  if date.chars.length==3
   norm_date = Date.strptime(date, '%m-%d')
+  else
+    norm_date = Date.strptime(date, '%m-%d-%y')
+  end
   norm_date = norm_date.to_s
 end
 
 # add reminder to data structure
-def create_reminder(due_date, reminder)
-  norm_date = normalize_date(due_date)
+# takes a date that has already gone through date_checker 
+def create_reminder(date, reminder)
+  norm_date = normalize_date(date)
   $DB.execute("INSERT INTO reminders (date, reminder) VALUES (?,?)",
     [norm_date, reminder])
 end
@@ -88,7 +79,7 @@ def print_reminders(array, mult_days = true)
     puts "You don't have any reminders."
   else
   puts "---------------------------------------"
-  puts "You have #{array.length} reminders:"
+  puts "You have #{array.length} reminder(s):"
   if mult_days
       array.each do |reminder|
         date = reminder[1]
@@ -107,9 +98,19 @@ def print_reminders(array, mult_days = true)
   end
 end
 
+######    DRIVER CODE     #############
+$DB = SQLite3::Database.new('reminders.db')
+create_table = <<-SQL
+  CREATE TABLE IF NOT EXISTS reminders (
+    id INTEGER PRIMARY KEY,
+    date VARCHAR(255),
+    reminder VARCHAR(255)
+  )
+SQL
+# create reminders table
+$DB.execute(create_table)
 
 ###### UI #######################
-
 
 puts "***********************************"
 puts "***********************************"
@@ -149,7 +150,7 @@ until repeat_flag
   when "1"
     puts "---------------------------------------"
     puts ""
-    puts "Enter date for new reminder (month-day)"
+    puts "Enter date for new reminder (month-day) or (month-day-year)"
     new_date = gets.chomp
     if new_date == "quit"
         exit
@@ -170,7 +171,7 @@ until repeat_flag
     repeat_flag = true
   when "3"
     puts "---------------------------------------"
-    puts "What day's reminders would you like to view?"
+    puts "What day's reminders would you like to view? (month-day)"
     input = gets.chomp
     if input == "quit"
       exit
@@ -194,6 +195,5 @@ end
 
 
 
-#clears table
-#$DB.execute('DROP TABLE reminders')
+
 
