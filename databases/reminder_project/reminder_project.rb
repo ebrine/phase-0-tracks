@@ -69,17 +69,59 @@ def get_reminders(date)
 end
 
 ###### UI
-puts "Enter date for new reminder (month-day)"
-new_date = gets.chomp
-new_date = date_checker(new_date)
-puts "What would you like to be reminded?"
-new_reminder = gets.chomp
-create_reminder(new_date, new_reminder)
+input = nil
 
-reminders_list = $DB.execute('SELECT * FROM reminders')
-puts "You have #{reminders_list.length} reminders:"
-reminders_list.each do |entry|
-  puts "On #{entry[1]} don't forget: #{entry[2]}"
-end
 
+puts "    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~"
+puts "    ~~~ REMINDER APP 2017 ~~~~~~"
+puts "    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~"
+puts "    ~~~~~ press (enter) ~~~~~~~~"
+puts "    ~~~~~~~~ to begin ~~~~~~~~~~"
+puts "    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~"
+gets.chomp
+
+
+puts "    ** Menu: **"
+puts ""
+puts "(make a selection to begin)"
+puts ""
+puts "(1) Add new reminder"
+puts "(2) View today's reminders"
+puts "(3) View another day's reminders"
+puts "(4) View all reminders"
+puts ""
+input = gets.chomp
+
+
+  if input.to_i == 1
+    puts "----------------------------------------"
+    puts ""
+    puts "Enter date for new reminder (month-day)"
+    new_date = gets.chomp
+    new_date = date_checker(new_date)
+    puts "What would you like to be reminded?"
+    new_reminder = gets.chomp
+    create_reminder(new_date, new_reminder)
+  elsif input.to_i == 2
+    # calls get_reminders on today
+  elsif input.to_i == 3
+    # calls get_reminders on another day
+  elsif input.to_i == 4
+    reminders_list = $DB.execute('SELECT * FROM reminders')
+    puts "You have #{reminders_list.length} reminders:"
+    reminders_list.each do |entry|
+    puts "On #{entry[1]} don't forget:" 
+    puts "#{entry[2]}"
+    puts ""
+    end
+  else 
+    puts "Please enter a valid selection."
+  end
+
+
+
+
+
+#clears at the end for now -- delete later!!
+#$DB.execute('DROP TABLE reminders')
 
