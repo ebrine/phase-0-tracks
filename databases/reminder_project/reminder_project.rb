@@ -108,12 +108,17 @@ end
 
 ###### UI #######################
 
-puts "    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~"
-puts "    ~~~ REMINDER APP 2017 ~~~~~~"
-puts "    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~"
-puts "    ~~~~~ press (enter) ~~~~~~~~"
-puts "    ~~~~~~~~ to begin ~~~~~~~~~~"
-puts "    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~"
+
+puts "***********************************"
+puts "***********************************"
+puts "*****                         *****"
+puts "*****    REMINDER APP 2017    *****"
+puts "*****                         *****"
+puts "********* press (enter) ***********"
+puts "*********   to begin    ***********"
+puts "*********               ***********"
+puts "***********************************"
+puts "***********************************"
 
 input = nil
 
@@ -132,7 +137,8 @@ puts "(4) View all reminders"
 puts ""
 input = gets.chomp
 puts " "
-  if input.to_i == 1
+  case input
+  when "1"
     puts "---------------------------------------"
     puts ""
     puts "Enter date for new reminder (month-day)"
@@ -149,10 +155,10 @@ puts " "
     create_reminder(new_date, new_reminder)
     puts ""
     puts "Your reminder has been added"
-  elsif input.to_i == 2
+  when "2"
     # calls get_reminders on today
     print_reminders(get_todays_reminders, false)
-  elsif input.to_i == 3
+  when "3"
     puts "---------------------------------------"
     puts "What day's reminders would you like to view?"
     input = gets.chomp
@@ -160,9 +166,9 @@ puts " "
       exit
     end
     print_reminders(get_reminders(input), false)
-  elsif input.to_i == 4
+  when "4"
     print_reminders($DB.execute('SELECT * FROM reminders'))
-  elsif input == "quit"
+  when "quit"
     exit
   else 
     puts "Please enter a valid selection."
