@@ -38,7 +38,7 @@
 ## Header
 require 'sqlite3'
 require_relative 'date_checker.rb'
-
+require 'Date'
 
 $DB = SQLite3::Database.new('reminders.db')
 create_table = <<-SQL
@@ -75,15 +75,33 @@ def get_reminders(date)
   #puts selected_reminders
 end
 
-def print_reminders(array)
+def get_todays_reminders
+  date = Date.today.to_s
+  $DB.execute("SELECT * FROM reminders WHERE date = ?", [date])
+end
+
+
+def print_reminders(array, mult_days = true)
+  if array.length ==0
+    puts"---------------------------------------"
+    puts "You don't have any reminders."
+  else
   puts "---------------------------------------"
   puts "You have #{array.length} reminders:"
-  array.each do |reminder|
-    date = reminder[1]
-    to_do = reminder[2]
-    puts ""
-    puts "On #{date} don't forget:"
-    puts "#{to_do}"
+  if mult_days
+      array.each do |reminder|
+        date = reminder[1]
+        to_do = reminder[2]
+        puts ""
+        puts "On #{date} don't forget:"
+        puts "#{to_do}"
+      end
+  else
+      array.each do |reminder|
+        puts ""
+        puts "* #{reminder[2]}"
+      end
+  end
   end
 end
 
@@ -96,12 +114,16 @@ puts "    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~"
 puts "    ~~~~~ press (enter) ~~~~~~~~"
 puts "    ~~~~~~~~ to begin ~~~~~~~~~~"
 puts "    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~"
+
+input = nil
+
+while input != "quit"
+puts " "
 gets.chomp
-
-
-puts "    ** Menu: **"
+puts "---------------------------------------"
+puts "        ** Menu: **"
 puts ""
-puts "(make a selection to begin)"
+puts "*** (make a selection or type (quit)) ***"
 puts ""
 puts "(1) Add new reminder"
 puts "(2) View today's reminders"
@@ -110,33 +132,46 @@ puts "(4) View all reminders"
 puts ""
 input = gets.chomp
 puts " "
-
   if input.to_i == 1
     puts "---------------------------------------"
     puts ""
     puts "Enter date for new reminder (month-day)"
     new_date = gets.chomp
+    if new_date == "quit"
+        exit
+    end
     new_date = date_checker(new_date)
     puts "What would you like to be reminded?"
     new_reminder = gets.chomp
+    if new_reminder == "quit"
+        exit
+    end
     create_reminder(new_date, new_reminder)
+    puts ""
+    puts "Your reminder has been added"
   elsif input.to_i == 2
     # calls get_reminders on today
+    print_reminders(get_todays_reminders, false)
   elsif input.to_i == 3
     puts "---------------------------------------"
     puts "What day's reminders would you like to view?"
     input = gets.chomp
-    print_reminders(get_reminders(input))
+    if input == "quit"
+      exit
+    end
+    print_reminders(get_reminders(input), false)
   elsif input.to_i == 4
     print_reminders($DB.execute('SELECT * FROM reminders'))
+  elsif input == "quit"
+    exit
   else 
     puts "Please enter a valid selection."
   end
+end
 
 
 
 
-
-#clears at the end for now -- delete later!!
+#clears table
 #$DB.execute('DROP TABLE reminders')
 
