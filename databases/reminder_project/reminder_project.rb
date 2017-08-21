@@ -6,12 +6,13 @@
   # message
   
 # METHODS/FUNCTIONALITY
-# Allow user to create new reminders
-# Allow user to edit reminders?
-# Allow user to access reminders for today
-# Allow user to access reminders for specified day
+# Allow user to create new reminders (DONE)
+# Allow user to access reminders for today (DONE)
+# Allow user to access reminders for specified day (DONE)
+# Allow user to view all reminders (DONE)
 
 # STRETCH:
+# Allow user to edit reminders?
 # order reminders chronologically
 # complete task/remove task from reminders list
 
@@ -94,7 +95,8 @@ def print_reminders(array, mult_days = true)
         to_do = reminder[2]
         puts ""
         puts "On #{date} don't forget:"
-        puts "#{to_do}"
+        puts ""
+        puts "* #{to_do}"
       end
   else
       array.each do |reminder|
@@ -114,6 +116,9 @@ puts "***********************************"
 puts "*****                         *****"
 puts "*****    REMINDER APP 2017    *****"
 puts "*****                         *****"
+puts "*****                         *****"
+puts "*****  Today is: #{Date.today}   *****"
+puts "*****                         *****"
 puts "********* press (enter) ***********"
 puts "*********   to begin    ***********"
 puts "*********               ***********"
@@ -123,12 +128,13 @@ puts "***********************************"
 input = nil
 
 while input != "quit"
+repeat_flag = false
 puts " "
 gets.chomp
-puts "---------------------------------------"
+puts "-----------------------------------"
 puts "        ** Menu: **"
 puts ""
-puts "*** (make a selection or type (quit)) ***"
+puts " (make a selection or type (quit))"
 puts ""
 puts "(1) Add new reminder"
 puts "(2) View today's reminders"
@@ -137,6 +143,8 @@ puts "(4) View all reminders"
 puts ""
 input = gets.chomp
 puts " "
+valid_input = ["1","2","3","4","quit"]
+until repeat_flag
   case input
   when "1"
     puts "---------------------------------------"
@@ -155,9 +163,11 @@ puts " "
     create_reminder(new_date, new_reminder)
     puts ""
     puts "Your reminder has been added"
+    repeat_flag = true
   when "2"
     # calls get_reminders on today
     print_reminders(get_todays_reminders, false)
+    repeat_flag = true
   when "3"
     puts "---------------------------------------"
     puts "What day's reminders would you like to view?"
@@ -166,15 +176,21 @@ puts " "
       exit
     end
     print_reminders(get_reminders(input), false)
+    repeat_flag = true
   when "4"
     print_reminders($DB.execute('SELECT * FROM reminders'))
+    repeat_flag = true
   when "quit"
     exit
   else 
+    until valid_input.include?input
     puts "Please enter a valid selection."
+    
+    input = gets.chomp
+    end
   end
 end
-
+end
 
 
 
