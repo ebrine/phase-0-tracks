@@ -19,3 +19,5 @@
 * POST methods are mostly used for creating and editing information
 
 #### Bonus question: What is a cookie? How does it relate to HTTP requests?
+* A cookie is a piece of data stored on a user's computer while they are browsing on the web.
+* Cookies help facilitate a few functions, such as keeping track of whether a user is logged into the site, and on which account (authentication cookies).
