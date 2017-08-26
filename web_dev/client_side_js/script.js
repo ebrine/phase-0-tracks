@@ -114,3 +114,11 @@ balloon_button.addEventListener("click", printInstructions);
 
 // For another implementation:
 //document.onkeydown = anim;
+
+$(document).ready(function(){
+
+  // $('#paragraph').css({
+  //   'background-color': 'red'  
+  // });
+  $('#paragraph').hide(2000).show(2000);
+});
