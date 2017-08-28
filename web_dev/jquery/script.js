@@ -99,9 +99,22 @@ $(document).ready(function(){
   // $('#paragraph').css({
   //   'background-color': 'red'  
   // });
+  var background_1_url = 'url("file:///C:/Users/eliza/documents/dbc_phase0/devbootcamp/phase-0-tracks/web_dev/jquery/seuss_background.jpg")';
+  var background_2_url = 'url("file:///C:/Users/eliza/documents/dbc_phase0/devbootcamp/phase-0-tracks/web_dev/jquery/seuss_background_2.jpg")';
+  var psychedelize = function(){
+    if ($('body').css("background-image") == background_1_url){
+      $('body').css("background-image", "url('seuss_background_2.jpg')");
+    } else if ($('body').css("background-image") == background_2_url) {
+      $('body').css("background-image", "url('seuss_background.jpg')");
+    } 
+  };
   $('#paragraph').hide(2000).show(2000);
   // responsive jQuery example
   $('#toggle_button').click(function(){
       $('#paragraph').toggle(2000);
+  });
+
+  $('#psychedelic_button').click(function(){
+      psychedelize();
   });
 });
