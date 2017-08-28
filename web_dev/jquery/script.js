@@ -6,7 +6,6 @@ var boy = document.getElementById("boy");
 
 var n = 0;
 function make_new_character(event) {
-  // console.log("Button clicked!");
   if (n == 0) {
   var element = document.createElement("img");
   element.setAttribute("src", "new_charac_horton.jpg");
@@ -14,12 +13,6 @@ function make_new_character(event) {
   n += 1;
   }
 };
-
-// var boyLeft = 0;
-// function move(event){
-//   boyLeft += 10;
-//   boy.style.left = boyLeft + 'px';
-// };
 
 var m = 0;
 function printInstructions(event){
@@ -57,11 +50,6 @@ function printInstructions(event){
   };
 };
 
-// var boyLeft = 0;
-// function move(event){
-//   boyLeft += 10;
-//   boy.style.left = boyLeft + 'px';
-// };
 var boyLeft = 0;
 var boyUp = 0;
 function moveBalloon(e){
@@ -103,22 +91,30 @@ function moveBalloon(e){
 };
 
 new_pic_button.addEventListener("click", make_new_character);
-// balloon_button.addEventListener("click", move);
+
 balloon_button.addEventListener("click", printInstructions);
-// up_button = document.getElementById("up");
-
-// down_button = document.getElementById("down");
-// left_button = document.getElementById("left");
-// right_button = document.getElementById("right");
-
-
-// For another implementation:
-//document.onkeydown = anim;
 
 $(document).ready(function(){
 
   // $('#paragraph').css({
   //   'background-color': 'red'  
   // });
+  var background_1_url = 'url("file:///C:/Users/eliza/documents/dbc_phase0/devbootcamp/phase-0-tracks/web_dev/jquery/seuss_background.jpg")';
+  var background_2_url = 'url("file:///C:/Users/eliza/documents/dbc_phase0/devbootcamp/phase-0-tracks/web_dev/jquery/seuss_background_2.jpg")';
+  var psychedelize = function(){
+    if ($('body').css("background-image") == background_1_url){
+      $('body').css("background-image", "url('seuss_background_2.jpg')");
+    } else if ($('body').css("background-image") == background_2_url) {
+      $('body').css("background-image", "url('seuss_background.jpg')");
+    } 
+  };
   $('#paragraph').hide(2000).show(2000);
+  // responsive jQuery example
+  $('#toggle_button').click(function(){
+      $('#paragraph').toggle(2000);
+  });
+
+  $('#psychedelic_button').click(function(){
+      psychedelize();
+  });
 });
